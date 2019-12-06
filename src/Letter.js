@@ -1,8 +1,8 @@
 console.log("this loaded")
 
 function Letter(letter) {
-    this.letter = letter;
-    this.guessedCorrectly = false;
+    this.letter = letter
+    this.guessedCorrectly = false
 
     this.display = function(letter) {
         if( this.letter === letter   && this.guessedCorrectly === false) {

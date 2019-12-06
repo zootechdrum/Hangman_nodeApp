@@ -10,7 +10,6 @@ function Word(w) {
 
     for(var i = 0; i < w.length; i++) {
         arrayOfLetters.push( new Letter(w[i]) )
-
     }
 
     this.callDisplay = function(s) {
@@ -21,13 +20,13 @@ function Word(w) {
 
     this.callGuessFunc = function() {
         for(var k = 0; k < arrayOfLetters; k++) {
-            arrayOfLetters[k].guessedLetter()
+            arrayOfLetters[k].display()
         }
     }
     
-
+    console.log(arrayOfLetters[0].display())
 }
 
+module.exports = Word
 
-Word(userIn)
 
