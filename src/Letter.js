@@ -2,17 +2,22 @@ console.log("this loaded")
 
 function Letter(letter) {
     this.letter = letter;
-    this.attemptLetter = false;
+    this.guessedCorrectly = false;
 
-    this.guessedLetter = function(letter) {
-        if( this.letter === false ) {
+    this.display = function(letter) {
+        if( this.letter === letter   && this.guessedCorrectly === false) {
             return letter
         }else {
             return "_"
         }
     }
 
-
+    this.upadateBool = function(letter) {
+        
+        if (this.letter === letter) {
+            this.guessedCorrectly = true
+        }
+    }
 }
 
 module.exports = Letter

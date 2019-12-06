@@ -13,6 +13,12 @@ function Word(w) {
 
     }
 
+    this.callDisplay = function(s) {
+        for( var j = 0; j < arrayOfLetters; j++) {
+            arrayOfLetters[j].display
+        }
+    }
+
     this.callGuessFunc = function() {
         for(var k = 0; k < arrayOfLetters; k++) {
             arrayOfLetters[k].guessedLetter()
