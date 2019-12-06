@@ -1,4 +1,6 @@
-function Letter (letter) {
+console.log("this loaded")
+
+function Letter(letter) {
     this.letter = letter;
     this.attemptLetter = false;
 
@@ -13,5 +15,4 @@ function Letter (letter) {
 
 }
 
-const l = new Letter()
-console.log(l)
+module.exports = Letter
