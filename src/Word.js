@@ -12,7 +12,13 @@ function Word(w) {
         arrayOfLetters.push( new Letter(w[i]) )
 
     }
-    console.log(arrayOfLetters)
+
+    this.callGuessFunc = function() {
+        for(var k = 0; k < arrayOfLetters; k++) {
+            arrayOfLetters[k].guessedLetter()
+        }
+    }
+    
 
 }
 
