@@ -11,12 +11,11 @@ var chosenWord = new Word(randomWord)
 isGameOver = function() {
 
     var current =  chosenWord.callDisplay()
-    console.log(current)
-    console.log(randomWord + "random")
+
 
     if (current === randomWord){
-        console.log("you win")
-    keepPlayingQ()
+
+        keepPlayingQ()
     }else {
         takeUserGuess()
     }
@@ -31,7 +30,8 @@ keepPlayingQ = function () {
         }
     },function (err, result) {
             if (result.keepPLaying == "Y"){
-                console.log("lets play")
+                console.log("Great Lets Play!")
+                takeUserGuess()
             }
         
         });
