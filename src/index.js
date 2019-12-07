@@ -1,15 +1,28 @@
 var prompt = require('prompt');
 var Word = require('./Word')
 
+var array = ["Maddax"]
 
-prompt.start();
+randomWord = new Word(array[0])
+console.log(randomWord)
 
+
+function takeUserGuess() {
 prompt.get({
-    properties:{
-        name:{
-            description: "What is your name?"
+    properties: {
+        letter: {
+            description: ("What is your letter")
         }
-    } 
-    }, function (err, result) {
-        console.log("You said your name is: " + result.name)
-})
+    }
+},function (err, result) {
+       randomWord.callGuessFunc(result.letter)
+       randomWord.callDisplay()
+    
+    });
+}
+
+takeUserGuess()
+
+//nail kit where you can do your own nails
+//drill bit fake nails liquid 
+//

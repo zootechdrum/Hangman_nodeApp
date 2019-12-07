@@ -1,21 +1,26 @@
 console.log("this loaded")
 
 function Letter(letter) {
+
     this.letter = letter
-    this.guessedCorrectly = false
+    this.guessedCorrectly = false;
 
     this.display = function(letter) {
-        if( this.letter === letter   && this.guessedCorrectly === false) {
-            return letter
+
+        if(this.guessedCorrectly) {
+            return this.letter;
         }else {
-            return "_"
+            return ' _ '
         }
+        console.log(result)
     }
 
-    this.upadateBool = function(letter) {
-        
+    this.updateBool = function(letter) {
         if (this.letter === letter) {
+            console.log("matched")
             this.guessedCorrectly = true
+        }else {
+            return false
         }
     }
 }
