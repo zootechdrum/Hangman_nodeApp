@@ -3,7 +3,7 @@ console.log("this loaded")
 function Letter(letter) {
 
     this.letter = letter
-    this.guessedCorrectly = true;
+    this.guessedCorrectly = false;
 
     this.display = function(letter) {
 

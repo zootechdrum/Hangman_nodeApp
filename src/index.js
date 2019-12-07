@@ -8,8 +8,11 @@ randomWord = new Word(array[0])
 
 isGameOver = function() {
     var current =  randomWord.callDisplay()
+
     if (current === array[0]){
     console.log("Win")
+    }else {
+        takeUserGuess()
     }
 }
 
