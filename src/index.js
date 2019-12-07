@@ -4,7 +4,14 @@ var Word = require('./Word')
 var array = ["Maddax"]
 
 randomWord = new Word(array[0])
-console.log(randomWord)
+
+
+isGameOver = function() {
+    var current =  randomWord.callDisplay()
+    if (current === array[0]){
+    console.log("Win")
+    }
+}
 
 
 function takeUserGuess() {
@@ -17,6 +24,7 @@ prompt.get({
 },function (err, result) {
        randomWord.callGuessFunc(result.letter)
        randomWord.callDisplay()
+       isGameOver()
     
     });
 }

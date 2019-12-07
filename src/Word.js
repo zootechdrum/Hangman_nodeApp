@@ -22,6 +22,7 @@ function Word(w) {
             
         }
         console.log(letter)
+        return letter
     }
 
     this.callGuessFunc = function(s) {
@@ -29,7 +30,6 @@ function Word(w) {
              arrayOfLetters[k].updateBool(s)
         }
     }
-    console.log(arrayOfLetters)
 }
 
 
