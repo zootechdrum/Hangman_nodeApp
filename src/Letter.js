@@ -16,7 +16,7 @@ function Letter(letter) {
     }
 
     this.updateBool = function(letter) {
-        if (this.letter === letter) {
+        if (this.letter.toLowerCase() === letter.toLowerCase()) {
             console.log("matched")
             this.guessedCorrectly = true
         }else {

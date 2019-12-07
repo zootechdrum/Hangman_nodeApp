@@ -1,9 +1,12 @@
 var prompt = require('prompt');
 var Word = require('./Word')
 
-var array = ["Maddax"]
+var array = ["Maddax", "Cesar", "Luna","Lus","Gomez"]
 
-randomWord = new Word(array[0])
+var randomNum = Math.floor((Math.random() * array.length) + 1)
+
+randomNum = Math.floor((Math.random() * array.length) + 1)
+randomWord = new Word(array[randomNum])
 
 
 isGameOver = function() {
@@ -16,8 +19,24 @@ isGameOver = function() {
     }
 }
 
+keepPlayingQ = function () {
+    prompt.get({
+        properties: {
+            keepPLaying: {
+                description: ("Would you like to keep playing?")
+            }
+        }
+    },function (err, result) {
+            
+        
+        });
+
+}
+
 
 function takeUserGuess() {
+
+
 prompt.get({
     properties: {
         letter: {
