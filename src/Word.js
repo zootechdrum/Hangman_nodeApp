@@ -8,9 +8,7 @@ function Word(w) {
 
     var arrayOfLetters = [];
 
-        
     
-
     for(var i = 0; i < w.length; i++) {
         arrayOfLetters.push(new Letter(w[i]))
     }

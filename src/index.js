@@ -4,16 +4,19 @@ var Word = require('./Word')
 var array = ["Maddax", "Cesar", "Luna","Lus","Gomez"]
 
 var randomNum = Math.floor((Math.random() * array.length) + 1)
-
-randomNum = Math.floor((Math.random() * array.length) + 1)
-randomWord = new Word(array[randomNum])
+var randomWord = array[randomNum]
+var chosenWord = new Word(randomWord)
 
 
 isGameOver = function() {
-    var current =  randomWord.callDisplay()
 
-    if (current === array[0]){
-    console.log("Win")
+    var current =  chosenWord.callDisplay()
+    console.log(current)
+    console.log(randomWord + "random")
+
+    if (current === randomWord){
+        console.log("you win")
+    keepPlayingQ()
     }else {
         takeUserGuess()
     }
@@ -23,11 +26,13 @@ keepPlayingQ = function () {
     prompt.get({
         properties: {
             keepPLaying: {
-                description: ("Would you like to keep playing?")
+                description: ("Would you like to keep playing? Y/N")
             }
         }
     },function (err, result) {
-            
+            if (result.keepPLaying == "Y"){
+                console.log("lets play")
+            }
         
         });
 
@@ -44,11 +49,11 @@ prompt.get({
         }
     }
 },function (err, result) {
-       randomWord.callGuessFunc(result.letter)
-       randomWord.callDisplay()
+       chosenWord.callGuessFunc(result.letter)
+       chosenWord.callDisplay()
        isGameOver()
-    
     });
+
 }
 
 takeUserGuess()
