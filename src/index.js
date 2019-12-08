@@ -1,7 +1,7 @@
 var prompt = require('prompt');
 var Word = require('./Word')
 
-var array = ["Maddax", "Cesar", "Luna", "Lus", "Gomez"]
+var array = ["Jurassic Park", "Web", "Nerd", "Movies", "Crazy Train"]
 
 var randomNum = Math.floor((Math.random() * array.length));
 var randomWord = array[randomNum]
@@ -10,14 +10,18 @@ var chosenWord = new Word(randomWord)
 var remainingGuesses = 10;
 
 newGame = function () {
+    console.log("-----New game initialized-----")
     randomNum = Math.floor((Math.random() * array.length));
     randomWord = array[randomNum]
     chosenWord = new Word(randomWord)
     remainingGuesses = 10;
+    chosenWord.callDisplay()
+    takeUserGuess()
+    
 }
 
 
-isGameOver = function (guesses) {
+isGameOver = function (current,guesses) {
 
     if (remainingGuesses === 1) {
         console.log("Looks like you ran out of guesses! That sucks")
@@ -29,9 +33,9 @@ isGameOver = function (guesses) {
         takeUserGuess()
     } else {
 
-        var current = chosenWord.callDisplay()
+        
         if (current === randomWord) {
-
+            console.log("Congrats You Guessed all of them correctly!!!")
             keepPlayingQ()
         } else {
             takeUserGuess()
@@ -47,20 +51,21 @@ keepPlayingQ = function () {
             }
         }
     }, function (err, result) {
-        if (result.keepPLaying == "Y") {
+        if (result.keepPLaying.toLowerCase() == "y") {
             console.log("Great Lets Play!")
             newGame()
             takeUserGuess()
+        }else {
+            console.log("-----------------")
+            console.log("See you next time")
+            console.log("-----------------")
         }
 
     });
-
 }
 
 
 function takeUserGuess() {
-
-
     prompt.get({
         properties: {
             letter: {
@@ -68,17 +73,15 @@ function takeUserGuess() {
             }
         }
     }, function (err, result) {
-        console.log(chosenWord.callGuessFunc(result.letter))
         chosenWord.callGuessFunc(result.letter)
-        chosenWord.callDisplay()
-        isGameOver(chosenWord.callGuessFunc(result.letter))
+        var current = chosenWord.callDisplay()
+        isGameOver(current, chosenWord.callGuessFunc(result.letter))
     });
 
 }
 
+newGame()
 
-chosenWord.callDisplay()
-takeUserGuess()
 
 //nail kit where you can do your own nails
 //drill bit fake nails liquid 

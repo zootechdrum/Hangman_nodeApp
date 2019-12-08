@@ -4,7 +4,6 @@ var Letter = require("./Letter")
 
 
 function Word(w) {
-    console.log(w)
 
     var arrayOfLetters = [];
 
