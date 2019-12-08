@@ -1,7 +1,7 @@
 var prompt = require('prompt');
 var Word = require('./Word')
 
-var array = ["Jurassic Park", "Web", "Nerd", "Movies", "Crazy Train"]
+var array = ["Jurassic Park", "You Can Do It", "You are the best", "You Are Great", "Best Dev Ever"]
 
 var randomNum = Math.floor((Math.random() * array.length));
 var randomWord = array[randomNum]

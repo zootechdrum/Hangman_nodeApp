@@ -2,12 +2,18 @@ console.log("this loaded")
 
 function Letter(letter) {
 
+
+
     this.letter = letter
     this.guessedCorrectly = false;
 
+    if(this.letter === ' ') {
+        this.guessedCorrectly = true
+    }
+
     this.display = function(letter) {
 
-        if(this.guessedCorrectly) {
+     if(this.guessedCorrectly) {
             return this.letter;
         }else {
             return ' _ '
@@ -16,6 +22,8 @@ function Letter(letter) {
     }
 
     this.updateBool = function(letter) {
+
+
         if (this.letter.toLowerCase() === letter.toLowerCase()) {
             this.guessedCorrectly = true
             return true
