@@ -1,5 +1,6 @@
 var prompt = require('prompt');
 var Word = require('./Word')
+const chalk = require('chalk');
 
 var array = ["Jurassic Park", "You Can Do It", "You are the best", "You Are Great", "Best Dev Ever"]
 
@@ -11,25 +12,31 @@ var alreadyGuessed = []
 var remainingGuesses = 10;
 
 newGame = function () {
-    console.log("-----New game initialized-----")
-    randomNum = Math.floor((Math.random() * array.length));
-    randomWord = array[randomNum]
-    chosenWord = new Word(randomWord)
-    remainingGuesses = 10;
+    console.log(chalk.green("----- ") + chalk.red("New Game") + chalk.green(" Initialized") + chalk.red(" -----"))
+      randomNum = Math.floor((Math.random() * array.length));
+     randomWord = array[randomNum]
+     chosenWord = new Word(randomWord)
+     remainingGuesses = 10;
+     alreadyGuessed = []
     chosenWord.callDisplay()
     takeUserGuess()
-    alreadyGuessed = []
+
     
 }
 
 
 isGameOver = function (current,guesses) {
+    // console.log(current)
+    console.log(guesses)
 
     if (remainingGuesses === 1) {
-        console.log("Looks like you ran out of guesses! That sucks")
+        console.log(chalk.red("Looks ") + chalk.green(" like you ran out ") + chalk.red(" of guesses! That sucks "))
+        console.log(chalk.red("-----------------"))
+        console.log(chalk.green("The word to guess was ")  + chalk.red(randomWord))
         keepPlayingQ();
     }
-    else if (guesses == false) {
+     if (guesses === false) {
+        console.log()
         --remainingGuesses
         console.log("You have " + remainingGuesses + " left")
         takeUserGuess()
@@ -37,7 +44,7 @@ isGameOver = function (current,guesses) {
 
         
         if (current === randomWord) {
-            console.log("Congrats You Guessed all of them correctly!!!")
+            console.log(chalk.red("Congrats You Guessed all of them correctly!!!"))
             keepPlayingQ()
         } else {
             takeUserGuess()
@@ -54,13 +61,13 @@ keepPlayingQ = function () {
         }
     }, function (err, result) {
         if (result.keepPLaying.toLowerCase() == "y") {
-            console.log("Great Lets Play!")
+            console.log(chalk.red("Great") + chalk.green("Lets") + chalk.red("Play!"))
             newGame()
             takeUserGuess()
         }else {
-            console.log("-----------------")
-            console.log("See you next time")
-            console.log("-----------------")
+            console.log(chalk.green("-----------------"))
+            console.log(chalk.red("See you next time"))
+            console.log(chalk.green("-----------------"))
         }
 
     });
@@ -74,7 +81,7 @@ function checkGuess(letter) {
     }else{
         for( var i = 0; i < alreadyGuessed.length; i++) {
             if( alreadyGuessed[i] === letter) {
-                console.log("already guessed")
+                console.log(chalk.red("Already guessed"))
             }
         }
     }    

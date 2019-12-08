@@ -11,8 +11,7 @@ function Word(w) {
     for (var i = 0; i < w.length; i++) {
         arrayOfLetters.push(new Letter(w[i]))
     }
-    console.log(arrayOfLetters)
-
+ 
     this.callDisplay = function () {
         var letter = '';
         var blankSpace;
@@ -25,12 +24,14 @@ function Word(w) {
     }
 
     this.callGuessFunc = function (s) {
+        var result = false
         for (var k = 0; k < arrayOfLetters.length; k++) {
             arrayOfLetters[k].updateBool(s)
             if (arrayOfLetters[k].updateBool(s)) {
                 result = true
             }
         }
+        return result
     }
 }
 
