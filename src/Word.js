@@ -25,7 +25,7 @@ function Word(w) {
 
     this.callGuessFunc = function(s) {
         for(var k = 0; k < arrayOfLetters.length; k++) {
-             arrayOfLetters[k].updateBool(s)
+             console.log(arrayOfLetters[k].updateBool(s))
         }
     }
 }

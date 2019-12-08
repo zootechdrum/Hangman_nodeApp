@@ -3,16 +3,21 @@ var Word = require('./Word')
 
 var array = ["Maddax", "Cesar", "Luna","Lus","Gomez"]
 
-var randomNum = Math.floor((Math.random() * array.length) + 1)
+var randomNum = Math.floor((Math.random() * array.length));
 var randomWord = array[randomNum]
 var chosenWord = new Word(randomWord)
 
+var remainingGuesses = 10;
+
+newGame = function() {
+     randomNum = Math.floor((Math.random() * array.length));
+     randomWord = array[randomNum]
+     chosenWord = new Word(randomWord)  
+}
+
 
 isGameOver = function() {
-
     var current =  chosenWord.callDisplay()
-
-
     if (current === randomWord){
 
         keepPlayingQ()
@@ -31,6 +36,7 @@ keepPlayingQ = function () {
     },function (err, result) {
             if (result.keepPLaying == "Y"){
                 console.log("Great Lets Play!")
+                newGame()
                 takeUserGuess()
             }
         
