@@ -13,10 +13,22 @@ newGame = function() {
      randomNum = Math.floor((Math.random() * array.length));
      randomWord = array[randomNum]
      chosenWord = new Word(randomWord)  
+     remainingGuesses = 10;
 }
 
 
-isGameOver = function() {
+isGameOver = function(guesses) {
+
+    if(remainingGuesses === 1) {
+        console.log("Looks like you ran out of guesses! That sucks")
+        keepPlayingQ();
+    }
+    else if(guesses == false) {
+        --remainingGuesses 
+        console.log("You have " + remainingGuesses + " left")
+        takeUserGuess()
+    }else{
+
     var current =  chosenWord.callDisplay()
     if (current === randomWord){
 
@@ -24,6 +36,7 @@ isGameOver = function() {
     }else {
         takeUserGuess()
     }
+  }
 }
 
 keepPlayingQ = function () {
@@ -55,13 +68,16 @@ prompt.get({
         }
     }
 },function (err, result) {
-       chosenWord.callGuessFunc(result.letter)
+        console.log(chosenWord.callGuessFunc(result.letter))
+         chosenWord.callGuessFunc(result.letter)
        chosenWord.callDisplay()
-       isGameOver()
+       isGameOver(chosenWord.callGuessFunc(result.letter))
     });
 
 }
 
+
+chosenWord.callDisplay()
 takeUserGuess()
 
 //nail kit where you can do your own nails
