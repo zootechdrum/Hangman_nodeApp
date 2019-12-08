@@ -50,6 +50,6 @@ function takeUserGuess() {
 ## Instructions on how to use.
 
 1. Do a Git Clone of this Repo
-2. switch to src folder in your terminal
+2. After successful clone, switch to src folder in your terminal 
 3. Run command node index.js
-4. Start Playing
+4. Start Playing!!
