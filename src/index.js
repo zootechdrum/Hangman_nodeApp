@@ -94,6 +94,7 @@ function takeUserGuess() {
                 description: "What is your letter",
                 type:'string',
                 required: true,
+                message: "You must enter a letter to play this game"
             }
         }
     }, function (err, result) {
