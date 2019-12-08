@@ -23,7 +23,7 @@ function Letter(letter) {
 
     this.updateBool = function(letter) {
 
-
+        
         if (this.letter.toLowerCase() === letter.toLowerCase()) {
             this.guessedCorrectly = true
             return true

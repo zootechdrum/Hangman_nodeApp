@@ -6,6 +6,7 @@ var array = ["Jurassic Park", "You Can Do It", "You are the best", "You Are Grea
 var randomNum = Math.floor((Math.random() * array.length));
 var randomWord = array[randomNum]
 var chosenWord = new Word(randomWord)
+var alreadyGuessed = []
 
 var remainingGuesses = 10;
 
@@ -17,6 +18,7 @@ newGame = function () {
     remainingGuesses = 10;
     chosenWord.callDisplay()
     takeUserGuess()
+    alreadyGuessed = []
     
 }
 
@@ -64,6 +66,20 @@ keepPlayingQ = function () {
     });
 }
 
+function checkGuess(letter) {
+
+    if( alreadyGuessed.length === 0) {
+        alreadyGuessed.push(letter)
+       
+    }else{
+        for( var i = 0; i < alreadyGuessed.length; i++) {
+            if( alreadyGuessed[i] === letter) {
+                console.log("already guessed")
+            }
+        }
+    }    
+}
+
 
 function takeUserGuess() {
     prompt.get({
@@ -73,12 +89,14 @@ function takeUserGuess() {
             }
         }
     }, function (err, result) {
+        checkGuess(result.letter)
         chosenWord.callGuessFunc(result.letter)
         var current = chosenWord.callDisplay()
         isGameOver(current, chosenWord.callGuessFunc(result.letter))
     });
 
 }
+
 
 newGame()
 

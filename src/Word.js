@@ -25,16 +25,12 @@ function Word(w) {
     }
 
     this.callGuessFunc = function (s) {
-        var result;
         for (var k = 0; k < arrayOfLetters.length; k++) {
             arrayOfLetters[k].updateBool(s)
             if (arrayOfLetters[k].updateBool(s)) {
                 result = true
             }
         }
-        if (result) {
-            return true;
-        } else { return false }
     }
 }
 
