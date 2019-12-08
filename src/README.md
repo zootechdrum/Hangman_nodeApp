@@ -45,7 +45,7 @@ function takeUserGuess() {
 ```
 
 ## Demo of working Node App
-![Demo of working Project](hangman_node.gif)
+![Demo of working Project](./hangman_node.gif)
 
 ## Instructions on how to use.
 
