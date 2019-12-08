@@ -43,3 +43,13 @@ function takeUserGuess() {
 
 }
 ```
+
+## Demo of working Node App
+![Demo of working Project](hangman_node.gif)
+
+## Instructions on how to use.
+
+1. Do a Git Clone of this Repo
+2. switch to src folder in your terminal
+3. Run command node index.js
+4. Start Playing
