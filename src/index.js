@@ -26,8 +26,7 @@ newGame = function () {
 
 
 isGameOver = function (current,guesses) {
-    // console.log(current)
-    console.log(guesses)
+
 
     if (remainingGuesses === 1) {
         console.log(chalk.red("Looks ") + chalk.green(" like you ran out ") + chalk.red(" of guesses! That sucks "))
@@ -92,14 +91,21 @@ function takeUserGuess() {
     prompt.get({
         properties: {
             letter: {
-                description: ("What is your letter")
+                description: "What is your letter",
+                type:'string',
+                required: true,
             }
         }
     }, function (err, result) {
+        if (result.letter.length > 1) {
+            console.log(chalk.green("Only one charechter") + chalk.red("is acceptable!!"))
+            takeUserGuess()
+        }else{
         checkGuess(result.letter)
         chosenWord.callGuessFunc(result.letter)
         var current = chosenWord.callDisplay()
         isGameOver(current, chosenWord.callGuessFunc(result.letter))
+        }
     });
 
 }
