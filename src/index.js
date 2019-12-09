@@ -1,3 +1,4 @@
+//This file only depends on the Word.js file
 var prompt = require('prompt');
 var Word = require('./Word')
 const chalk = require('chalk');
@@ -11,6 +12,7 @@ var alreadyGuessed = []
 
 var remainingGuesses = 10;
 
+//Initiates new game when file is run
 newGame = function () {
     console.log(chalk.green("----- ") + chalk.red("New Game") + chalk.green(" Initialized") + chalk.red(" -----"))
       randomNum = Math.floor((Math.random() * array.length));
@@ -24,7 +26,9 @@ newGame = function () {
     
 }
 
-
+// checks if the current displayed word
+// matches the actual word chosen
+// also is responsible for decreaing guess count
 isGameOver = function (current,guesses) {
 
 
@@ -51,6 +55,7 @@ isGameOver = function (current,guesses) {
     }
 }
 
+//Checks if the user wants to keep playing
 keepPlayingQ = function () {
     prompt.get({
         properties: {
@@ -72,12 +77,15 @@ keepPlayingQ = function () {
     });
 }
 
-function checkGuess(letter) {
 
+//Checks if the user guess 
+function checkGuess(letter) {
     if( alreadyGuessed.length === 0) {
         alreadyGuessed.push(letter)
        
     }else{
+        //iterates over the array and checks if
+        //the letter the user typed in exists in array.
         for( var i = 0; i < alreadyGuessed.length; i++) {
             if( alreadyGuessed[i] === letter) {
                 console.log(chalk.red("Already guessed"))
@@ -91,6 +99,7 @@ function takeUserGuess() {
     prompt.get({
         properties: {
             letter: {
+                //Prompt's user for the letter
                 description: "What is your letter",
                 type:'string',
                 required: true,
@@ -98,10 +107,12 @@ function takeUserGuess() {
             }
         }
     }, function (err, result) {
+        //Shows user message if more than one letter is typed
         if (result.letter.length > 1) {
             console.log(chalk.green("Only one charechter") + chalk.red("is acceptable!!"))
             takeUserGuess()
         }else{
+        //checks user guess then checks if the game is over
         checkGuess(result.letter)
         chosenWord.callGuessFunc(result.letter)
         var current = chosenWord.callDisplay()
@@ -111,7 +122,7 @@ function takeUserGuess() {
 
 }
 
-
+//Initiates game
 newGame()
 
 
